@@ -1,7 +1,6 @@
 const connection = require("../../models/db");
 
 
-
 const creategrop = (req, res) => {
     const { gropjob, ActualCost, TotalBudget, BudgetVal } = req.body;
     const query = `INSERT INTO grop_job (gropjob,ActualCost,TotalBudget,BudgetVal)VALUES(?,?,?,?);`;
@@ -19,14 +18,14 @@ const creategrop = (req, res) => {
             massage: "Grop Created Successfully",
             result: result
         });
-    })
+    });
 };
 
 
 const createSubJob = (req, res) => {
-    const { grop, ActualCost, TotalBudget, BudgetVal,grop_name } = req.body;
-    const query = `INSERT INTO sub_job (grop,ActualCost,TotalBudget,BudgetVal,grop_name)VALUES(?,?,?,?,?);`;
-    const data = [grop, ActualCost, TotalBudget, BudgetVal,grop_name ];
+    const { grop, ActualCostsub, TotalBudgetsub, BudgetValsub,grop_name } = req.body;
+    const query = `INSERT INTO sub_job (grop, ActualCostsub, TotalBudgetsub, BudgetValsub,grop_name)VALUES(?,?,?,?,?);`;
+    const data = [grop, ActualCostsub, TotalBudgetsub, BudgetValsub,grop_name ];
     connection.query(query, data, (err, result) => {
         if (err) {
             return res.status(409).json({
@@ -40,8 +39,9 @@ const createSubJob = (req, res) => {
             massage: "sub_job Created Successfully",
             result: result
         });
-    })
+    });
 };
+
 
 
 

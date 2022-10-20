@@ -17,9 +17,9 @@ CREATE TABLE grop_job(
 CREATE TABLE sub_job(
     id int AUTO_INCREMENT NOT NULL,
     grop varchar(255),
-    ActualCost int,
-    TotalBudget int,
-    BudgetVal int,
+    ActualCostsub int,
+    TotalBudgetsub int,
+    BudgetValsub int,
     grop_name int,
     FOREIGN KEY (grop_name) REFERENCES grop_job(id),
     is_deleted TINYINT DEFAULT 0,
@@ -36,10 +36,10 @@ CREATE TABLE users(
 
 CREATE TABLE grop_users(
     id int AUTO_INCREMENT NOT NULL,
-    grop_name int,
-    job_name int,
-    FOREIGN KEY (grop_name) REFERENCES grop_job(id),
-    FOREIGN KEY (job_name) REFERENCES sub_job(id),
+    grop_id int,
+    job_id int,
     is_deleted TINYINT DEFAULT 0,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    FOREIGN KEY (grop_id) REFERENCES grop_job(id),
+    FOREIGN KEY (job_id) REFERENCES sub_job(id)
 );
