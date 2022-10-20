@@ -4,7 +4,41 @@ CREATE DATABASE application;
 
 USE application;
 
-CREATE TABLE users(
-
+CREATE TABLE grop_job(
+    id int AUTO_INCREMENT NOT NULL,
+    ActualCost int,
+    TotalBudget int,
+    BudgetVal int,
+    gropjob varchar(255),
+    is_deleted TINYINT DEFAULT 0,
+    PRIMARY KEY (id)
 );
 
+CREATE TABLE sub_job(
+    id int AUTO_INCREMENT NOT NULL,
+    grop varchar(255),
+    ActualCost int,
+    TotalBudget int,
+    BudgetVal int,
+    grop_name int,
+    FOREIGN KEY (grop_name) REFERENCES grop_job(id),
+    is_deleted TINYINT DEFAULT 0,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE users(
+    id int AUTO_INCREMENT NOT NULL,
+    img varchar(255),
+    is_deleted TINYINT DEFAULT 0,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE grop_users(
+    id int AUTO_INCREMENT NOT NULL,
+    grop_name int,
+    job_name int,
+    FOREIGN KEY (grop_name) REFERENCES grop_job(id),
+    FOREIGN KEY (job_name) REFERENCES sub_job(id),
+    is_deleted TINYINT DEFAULT 0,
+    PRIMARY KEY (id)
+);
