@@ -6,10 +6,10 @@ USE application;
 
 CREATE TABLE grop_job(
     id int AUTO_INCREMENT NOT NULL,
+    gropjob varchar(255),
     ActualCost int,
     TotalBudget int,
     BudgetVal int,
-    gropjob varchar(255),
     is_deleted TINYINT DEFAULT 0,
     PRIMARY KEY (id)
 );
@@ -28,6 +28,7 @@ CREATE TABLE sub_job(
 
 CREATE TABLE users(
     id int AUTO_INCREMENT NOT NULL,
+    email varchar(255) unique,
     img varchar(255),
     is_deleted TINYINT DEFAULT 0,
     PRIMARY KEY (id)
