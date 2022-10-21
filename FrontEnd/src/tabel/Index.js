@@ -21,7 +21,6 @@ function ResponsiveBreakpointsExample() {
             }
             setData(data)
 
-
             const emails = arr2.map((element) => {
                 return element.map((ele) => {
                     return ele.email
