@@ -1,4 +1,4 @@
-import Table from 'react-bootstrap/Table';
+import { Table } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";
 import { useEffect, useState } from 'react';
@@ -29,8 +29,8 @@ function ResponsiveBreakpointsExample() {
             const users = emails.map((ele) => {
                 return ele.filter((item, index) => ele.indexOf(item) === index);
             });
-            console.log(users);
-            console.log(arr2);
+            // console.log(users);
+            // console.log(arr2);
             setuserrs(users)
             // console.log(users);
 
@@ -55,100 +55,46 @@ function ResponsiveBreakpointsExample() {
         getalldet(); getall()
     }, [])
 
-    return (
-        <div>
+    return (<Table striped>
 
-            <>
-                {useeer && data && all && all.map((element, index) => {
-                    return (<div key={index}>
-                        <div >
-                            <hr></hr>
-                            <div>{element.grop}</div>
-                            <div>{element.acc}</div>
-                            <div>{element.totle}</div>
-                            <div>{element.budget}</div>
-
-                            <div>{useeer[index].map((elem, ind) => {
-                                return <div key={ind}>
-                                    <b>{elem}</b>
-                                </div>
-                            })}</div>
-
-                            <div>{element.jops.map((ele, ind) => {
-                                return <div key={ind}>
-                                    <div>{ele.grop}</div>
-                                    <div>{ele.ActualCostsub}</div>
-                                    <div>{ele.TotalBudgetsub}</div>
-                                    <div>{ele.TotalBudgetsub - ele.ActualCostsub}</div>
-
-                                    <div>{data.map((elem, ind) => {
-                                        return <div key={ind}>
-                                            {ele.grop === elem.grop && <div>{elem.email}</div>}
-                                        </div>
-                                    })}</div>
-                                </div>
-                            })}</div>
-                        </div>
-                    </div>
-                    )
-                })}</>
-            {/* <Table responsive="sm">
+        {useeer && data && all && all.map((element, index) => {
+            return (<Table  key={index}>
                 <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Assignees</th>
-                        <th>Actual Cost</th>
-                        <th>Total Budget</th>
-                        <th>Budget val...</th>
-                    </tr>
+                    <th>Name</th>
+                    <th>Assignees</th>
+                    <th>Actual Cost</th>
+                    <th>Total Budget</th>
+                    <th>Budget val...</th>
                 </thead>
-                {data && data.map((ele, index) => {
-
-                    return (<tbody key={index}>
-                        <tr>
-                            <td>{ele[0].gropjob}</td>
-                            <td>{ele.img}</td>
-                            <td>{ele[0].ActualCost}</td>
-                            <td>{ele[0].TotalBudget}</td>
-                            <td>{ele[0].TotalBudget - ele[0].ActualCost}</td>
+                <tbody>
+                    <td>{element.grop}</td>
+                    <td>{useeer[index].map((elem, ind) => {
+                        return <tr key={ind}>
+                            <b>{elem}</b>
                         </tr>
-                        <tr>
-                            <td style={{ fontSize: "12px" }}>
-                                <ul>
-                                    { }
-                                    <li>{ele[0].grop}</li>
-                                    <li>{ele[1].grop}</li>
-                                    <li>{ele[2].grop}</li>
-                                </ul>
-                            </td>
+                    })}</td>
+                    <td>{element.acc}</td>
+                    <td>{element.totle}</td>
+                    <td>{element.budget}</td>
 
-                            <td>
-                                <ul>
-                                    <li>{ele[index].img}</li>
-                                </ul>
-                            </td>
-                            <td>
-                                <ul>
-                                    <li>{ele[index].ActualCostsub}</li>
-
-                                </ul>
-                            </td>
-                            <td>
-                                <ul>
-                                    <li>{ele[index].TotalBudgetsub}</li>
-                                </ul>
-                            </td>
-                            <td>
-                                <ul>
-                                    <li>{ele[index].TotalBudgetsub}-{ele[index].ActualCostsub}</li>
-                                </ul>
-                            </td>
+                    {element.jops.map((ele, ind) => {
+                        return <tr key={ind}>
+                            <td>{ele.grop}</td>
+                            {data.map((elem, ind) => {
+                                return <tr key={ind}>
+                                    {ele.grop === elem.grop && <td>{elem.email}</td>}
+                                </tr>
+                            })}
+                            <td>{ele.ActualCostsub}</td>
+                            <td>{ele.TotalBudgetsub}</td>
+                            <td>{ele.TotalBudgetsub - ele.ActualCostsub}</td>
                         </tr>
-                    </tbody>)
-                })}
-            </Table> */}
-        </div>
-    );
+                    })}
+                </tbody>
+            </Table>
+            )
+        })}
+    </Table>);
 }
 
 export default ResponsiveBreakpointsExample;
