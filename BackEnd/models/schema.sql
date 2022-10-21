@@ -37,9 +37,11 @@ CREATE TABLE users(
 CREATE TABLE grop_users(
     id int AUTO_INCREMENT NOT NULL,
     grop_id int,
+    user_id int,
     job_id int,
     is_deleted TINYINT DEFAULT 0,
     PRIMARY KEY (id),
     FOREIGN KEY (grop_id) REFERENCES grop_job(id),
+    FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (job_id) REFERENCES sub_job(id)
 );
